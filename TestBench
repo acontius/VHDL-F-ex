@@ -1,0 +1,42 @@
+library ieee ;
+use ieee.std_logic_1164.all;
+
+entity main_tb is
+end entity ;
+
+architecture behavioral of main_tb is
+
+component main is 
+port
+(
+   bit0 , bit1 , bit2 , bit3 : in bit;
+   f , g : out bit
+);
+end component ;
+
+   signal bit0:bit :='0';
+   signal bit1:bit :='0';
+   signal bit2:bit :='0';
+   signal bit3:bit :='0';
+   signal f:bit :='0';
+   signal g:bit :='0'; 
+
+begin 
+
+   uut:main port map(
+
+      bit0 => bit0 ,
+      bit1 => bit1 ,
+      bit2 => bit2 ,
+      bit3 => bit3 ,
+      g => g ,
+      f => f 
+      
+   );
+
+   bit3 <= not bit3 after 3 ns ; 
+   bit2 <= not bit2 after 6 ns ;
+   bit1 <= not bit1 after 12 ns ;
+   bit0 <= not bit0 after 24 ns ;
+
+end architecture;
